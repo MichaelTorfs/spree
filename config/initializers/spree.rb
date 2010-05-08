@@ -38,7 +38,7 @@ class ActiveRecord::Base
   named_scope :conditions_all, lambda { |*args| {:conditions => [args].flatten} }
 
   # forming the disjunction of a list of conditions (as strings)
-  named_scope :conditions_any, lambda { |*args| 
+  named_scope :conditions_any, lambda { |*args|
     args = [args].flatten
     raise "non-strings in conditions_any" unless args.all? {|s| s.is_a? String}
     { :conditions => args.map {|c| "(#{c})"}.join(" OR ") }
@@ -48,6 +48,11 @@ end
 
 class String #:nodoc:
   include Spree::Support::CoreExtensions::String
+end
+
+if Spree::Config.instance
+  Spree::Config.set(:default_locale => 'nl-BE')
+  Spree::Config.set(:allow_ssl_in_production => false)
 end
 
 require 'spree/theme_support'
