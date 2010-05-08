@@ -35,6 +35,8 @@ spree_test
 tmp
 vendor/rails
 vendor/extensions/google_base
+vendor/extensions/i18n
+vendor/extensions/clear2pay_gateway
 public/google_base.xml
 public/template_google_base.xml
 coverage/*
